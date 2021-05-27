@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "14.15.5",
+    "npm": "6.x"
+  },
   "scripts": {
     "client": "npm run start --prefix client",
     "server": "nodemon index.js",
-    "dev": "concurrently \" npm run client \" \" npm run server \" "
+    "dev": "concurrently \" npm run client \" \" npm run server \" ",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
