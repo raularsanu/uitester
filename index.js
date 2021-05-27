@@ -25,10 +25,10 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cookieSession({
     maxAge:24 * 60 * 60 * 1000,
-    keys:keys.cookieKeys
+    keys:['dasfasfasf','asfasfasff']
 }));
 
-const conn = mongoose.createConnection(keys.dbURL);
+const conn = mongoose.createConnection(process.env.DBKEY);
 module.exports = conn;
 
 let gfs;
@@ -39,7 +39,7 @@ conn.once('open',()=>{
 });
 
 const storage = new GridFsStorage({
-    url:keys.dbURL,
+    url:process.env.DBKEY,
     file: (req, file) => {
         return {
         filename: req.session.id + '_' + req.session.tests + '_' + file.originalname,
