@@ -9,26 +9,13 @@ const app = express();
 
 const keys = require('./config/keys');
 
-if(process.env.NODE_ENV === 'production'){
-
-    app.use(express.static('client/build'));
-
-    const path = require('path');
-    app.get('*',(req,res)=>{
-        res.sendFile(path.resolve(__dirname,'client','build','index.html'));
-    });
-
-};
-
-const PORT = process.env.PORT || 5000;
-
 app.use(express.json());
 app.use(cookieSession({
     maxAge:24 * 60 * 60 * 1000,
-    keys:['dasfasfasf','asfasfasff']
+    keys:keys.cookieKeys
 }));
 
-const conn = mongoose.createConnection(process.env.DBKEY);
+const conn = mongoose.createConnection(keys.dbURL);
 module.exports = conn;
 
 let gfs;
@@ -39,7 +26,7 @@ conn.once('open',()=>{
 });
 
 const storage = new GridFsStorage({
-    url:process.env.DBKEY,
+    url:keys.dbURL,
     file: (req, file) => {
         return {
         filename: req.session.id + '_' + req.session.tests + '_' + file.originalname,
@@ -158,5 +145,18 @@ app.get('/images/:filename',(req,res)=>{
 })
 
 require('./routes/authRoutes')(app);
+
+if(process.env.NODE_ENV === 'production'){
+
+    app.use(express.static('client/build'));
+
+    const path = require('path');
+    app.get('*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+    });
+
+};
+
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT);
