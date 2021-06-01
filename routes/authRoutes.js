@@ -54,6 +54,7 @@ module.exports = app => {
 
         await User.findOne({ email, password }, (err,docs) => {
               if(err){
+                res.send({});
                 return  console.log(err);
               }
 
@@ -74,12 +75,11 @@ module.exports = app => {
                         tests: docs.tests
                     };
                 };
+                res.send({});
               } else {
-                  res.send({error:'No user with this account found'});
+                  res.send({error:'Incorrect email or password'});
               };
         });
-
-        res.send({});
     });
 
     app.get('/auth/logout', (req,res) => {

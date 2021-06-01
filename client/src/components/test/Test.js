@@ -93,7 +93,7 @@ function Test({ test, emptyTest }) {
         <div style={finishStyle} className='test-finish-container'>
             <div className='test-finish-input-container'>
                <h1>Test completed!</h1>
-               <p>Please give the devloper you thoughts :</p>
+               <p className='test-finish-input-container-p'>Please give the devloper you thoughts :</p>
                <textarea onChange={changeFeedback} value={feedback}></textarea>
                {err}
                <button onClick={checkSubmit}>Send</button>
@@ -135,6 +135,13 @@ function Test({ test, emptyTest }) {
                         width: test.pages[next].button.width + '%'
                     });
                     setNext(test.pages[next].button.next);
+                } else {
+                    setButton({
+                        top: 0 + '%',
+                        left: 0 + '%',
+                        height: 0 + '%',
+                        width: 0 + '%'
+                    }); 
                 }
             }} style={button}></button>
         </div>

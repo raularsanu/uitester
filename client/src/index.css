@@ -109,6 +109,15 @@ body {
   height: auto;
   margin-top: 60px;
 }
+.auth-error{
+  position: relative;
+  float: left;
+  width: 100%;
+  color:red;
+  margin:0;
+  border:0;
+  font-size: 13px;
+}
 .auth-type-hidden{
   position: absolute;
   visibility: hidden;
@@ -706,6 +715,16 @@ Auth style stops here */
   font-size: 13px;
   margin:0;
   border:0;
+  color:red;
+}
+.login-error{
+  position: relative;
+  float: left;
+  width: 100%;
+  font-size: 13px;
+  margin:0;
+  border:0;
+  margin-top: 22px;
   color:red;
 }
 .upload-error{
@@ -1504,7 +1523,7 @@ Auth style stops here */
   left: 50%;
   transform: translate(-50%,-50%);
 }
-.test-finish-input-container h1, p{
+.test-finish-input-container h1, .test-finish-input-container-p{
   position: relative;
   float: left;
   width: 100%;
@@ -1515,7 +1534,7 @@ Auth style stops here */
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.test-finish-input-container p{
+.test-finish-input-container-p{
   font-size: 15px;
   text-align: center;
   margin-top: 0px;
@@ -1552,12 +1571,14 @@ Auth style stops here */
   border:0;
   margin-top: 15px;
   margin-bottom: 30px;
+  text-align: center;
   font-size: 15px;
 }
 .error-test{
-  text-align: left;
+  text-align: center;
   font-size: 14px;
   color:red;
+
 }
 .dashboard-response{
   position: relative;
