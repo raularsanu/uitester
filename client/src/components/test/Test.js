@@ -32,7 +32,7 @@ function Test({ test, emptyTest }) {
         if(test.pages === undefined){
             return 
         } else {
-            setSrc('http://localhost:5000/images/' + test.pages[test.start].src);
+            setSrc('https://quiet-inlet-46335.herokuapp.com/images/' + test.pages[test.start].src);
             setButton({
                 top: test.pages[test.start].button.top + '%',
                 left: test.pages[test.start].button.left + '%',
@@ -122,7 +122,7 @@ function Test({ test, emptyTest }) {
                 finishTest();
             }} src={src}></img>
             <button className='test-target-button' onClick={()=>{
-                setSrc('http://localhost:5000/images/' + test.pages[next].src);
+                setSrc('https://quiet-inlet-46335.herokuapp.com/images/' + test.pages[next].src);
                 setClicked(clicked => clicked + 1);
                 setLoader({
                     display:'block'
